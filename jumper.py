@@ -1,9 +1,11 @@
 import random
-from words import word_list
+#from words import words
 
+words = ["Programming", "Python", "Future", "Programmer", "Coding", "Computer"]
 
 def get_word():
-    word = random.choice(word_list)
+    words = ["Programming", "Python", "Future", "Programmer", "Coding", "Computer"]
+    word = random.choice(words)
     return word.upper()
 
 
@@ -19,7 +21,7 @@ def play(word):
     print("\n")
     print("^^^^^^^")
     while not guessed and tries > 0:
-        guess = input("Please guess a letter or word: ").upper()
+        guess = input("Guess a letter [a-z]: ").upper()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
                 print("You already guessed the letter", guess)
@@ -48,88 +50,103 @@ def play(word):
                 guessed = True
                 word_completion = word
         else:
-            print("Not a valid guess.")
-        print(display_jumper(tries))
+            print("\n")
         print(word_completion)
-        print("\n")
-    if guessed:
-        print("Congrats, you guessed the word! You win!")
-    else:
-        print("Sorry, you ran out of tries. The word was " + word + ". Maybe next time!")
+        print(display_jumper(tries))
+        print("^^^^^^^")
 
 
 def display_jumper(tries):
-    stages = [  # final state: head, torso, both arms, and both legs
-                """
-                   --------
-                   |      |
-                   |      O
-                   |     \\|/
-                   |      |
-                   |     / \\
-                   -
+    stages = [  
+    """              
+
+
+
+ 
+   x
+  /|\
+  / \
+
+
+
                 """,
-                # head, torso, both arms, and one leg
+                
                 """
-                   --------
-                   |      |
-                   |      O
-                   |     \\|/
-                   |      |
-                   |     / 
-                   -
+
+
+
+ \   /
+   0
+  /|\
+  / \
+
+
+
                 """,
-                # head, torso, and both arms
+                
                 """
-                   --------
-                   |      |
-                   |      O
-                   |     \\|/
-                   |      |
-                   |      
-                   -
+
+
+\     / 
+ \   /
+   0
+  /|\
+  / \
+
+
+
                 """,
-                # head, torso, and one arm
+                
                 """
-                   --------
-                   |      |
-                   |      O
-                   |     \\|
-                   |      |
-                   |     
-                   -
+  
+   _ 
+\     / 
+ \   /
+   0
+  /|\
+  / \
+
+
                 """,
-                # head and torso
+               
                 """
-                   --------
-                   |      |
-                   |      O
-                   |      |
-                   |      |
-                   |     
-                   -
+  
+ _____
+\     / 
+ \   /
+   0
+  /|\
+  / \
+
+
                 """,
-                # head
+               
                 """
-                   --------
-                   |      |
-                   |      O
-                   |    
-                   |      
-                   |     
-                   -
-                """,
-                # initial empty state
+  
+/_____\
+\     / 
+ \   /
+   0
+  /|\
+  / \
+
+
                 """
-                   --------
-                   |      |
-                   |      
-                   |    
-                   |      
-                   |     
-                   -
+                    ,
                 """
-    ]
+  ___
+/ ___ \
+\     / 
+ \   /
+   0
+  /|\
+  / \
+
+    
+                """
+                           
+                            
+                            ]
     return stages[tries]
 
 
